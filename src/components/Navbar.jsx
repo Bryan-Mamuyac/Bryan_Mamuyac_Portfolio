@@ -30,18 +30,34 @@ const Navbar = () => {
       borderBottom: scrolled ? '1px solid var(--glass-border)' : '1px solid transparent',
       transition: 'all 0.4s ease',
     }}>
-      {/* Logo */}
+      {/* Logo — profile photo */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
         <div style={{
           width: '38px', height: '38px',
-          background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-cyan))',
           borderRadius: '10px',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontFamily: 'var(--font-display)',
-          fontWeight: 800, fontSize: '1rem',
-          color: '#fff',
+          padding: '2px',
+          background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-cyan))',
           boxShadow: '0 4px 15px var(--accent-glow)',
-        }}>BM</div>
+          flexShrink: 0,
+        }}>
+          <div style={{
+            width: '100%', height: '100%',
+            borderRadius: '8px',
+            overflow: 'hidden',
+            background: 'var(--bg-secondary)',
+          }}>
+            <img
+              src="/assets/images/bryan.jpg"
+              alt="Bryan"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+              onError={e => {
+                e.target.style.display = 'none';
+                e.target.parentElement.style.cssText += 'display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#63b3ed,#4dd0e1);';
+                e.target.parentElement.innerHTML = '<span style="font-size:0.85rem;font-weight:800;color:#fff;font-family:sans-serif">BM</span>';
+              }}
+            />
+          </div>
+        </div>
         <span style={{
           fontFamily: 'var(--font-display)',
           fontWeight: 700,

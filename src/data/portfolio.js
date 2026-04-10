@@ -3,7 +3,7 @@
 // ============================================================
 
 export const personalInfo = {
-  name: "Bryan Mamuyac JR.",
+  name: "Bryan Mamuyac",
   nickname: "Bryan",
   tagline: "Full Stack Developer",
   taglineAlt: "Data Analyst",
@@ -18,15 +18,19 @@ export const personalInfo = {
   github: "https://github.com/Bryan-Mamuyac",
   linkedin: "https://www.linkedin.com/in/bryan-mamuyac-jr-2648543b2/",
   githubRepos: "https://github.com/Bryan-Mamuyac?tab=repositories",
+  facebook: "https://www.facebook.com/BETA.XbX177.03",
+  instagram: "https://www.instagram.com/bryy.bocchi/",
+  twitter: "https://x.com/mamuyac89900",
 };
 
 export const navLinks = [
-  { label: "Home", to: "hero" },
-  { label: "About", to: "about" },
-  { label: "Skills", to: "skills" },
-  { label: "Projects", to: "projects" },
+  { label: "Home",       to: "hero"       },
+  { label: "About",      to: "about"      },
+  { label: "Skills",     to: "skills"     },
+  { label: "Analytics",  to: "analytics"  },
+  { label: "Projects",   to: "projects"   },
   { label: "Experience", to: "experience" },
-  { label: "Contact", to: "contact" },
+  { label: "Contact",    to: "contact"    },
 ];
 
 export const skills = {
@@ -227,6 +231,9 @@ export const contactInfo = {
   location: "Aringay, La Union, Philippines",
   github: "https://github.com/Bryan-Mamuyac",
   linkedin: "https://www.linkedin.com/in/bryan-mamuyac-jr-2648543b2/",
+  facebook: "https://www.facebook.com/BETA.XbX177.03",
+  instagram: "https://www.instagram.com/bryy.bocchi/",
+  twitter: "https://x.com/mamuyac89900",
   availability: "Open to Work",
   availabilityNote: "Actively looking for Full Stack Developer and Data Analyst roles.",
 };
