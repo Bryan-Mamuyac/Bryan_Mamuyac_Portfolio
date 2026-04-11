@@ -156,12 +156,39 @@ const MarqueeRow = ({ items, reverse = false, speed = 30 }) => (
   </div>
 );
 
+// ─── SVG icon map for skill bars ─────────────────────────────────────────────
+const SKILL_ICONS = {
+  aspnet:   <svg viewBox="0 0 24 24" fill="none" stroke="#7b5cf0" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M8 9l2 2-2 2M13 13h3"/></svg>,
+  database: <svg viewBox="0 0 24 24" fill="none" stroke="#e8382d" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>,
+  code:     <svg viewBox="0 0 24 24" fill="none" stroke="#f7df1e" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>,
+  php:      <svg viewBox="0 0 24 24" fill="none" stroke="#8892be" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="12" rx="10" ry="5"/><path d="M9 10h2a1.5 1.5 0 010 3H9v2m7-5h-2v5"/></svg>,
+  mysql:    <svg viewBox="0 0 24 24" fill="none" stroke="#4479a1" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3C7 3 4 5 4 8v8c0 3 3 5 8 5s8-2 8-5V8c0-3-3-5-8-5z"/><path d="M4 8c0 3 3 5 8 5s8-2 8-5"/></svg>,
+  signal:   <svg viewBox="0 0 24 24" fill="none" stroke="#63b3ed" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="#63b3ed"/></svg>,
+  react:    <svg viewBox="0 0 24 24" fill="none" stroke="#61dafb" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="2" fill="#61dafb"/><ellipse rx="10" ry="4" cx="12" cy="12"/><ellipse rx="10" ry="4" cx="12" cy="12" transform="rotate(60 12 12)"/><ellipse rx="10" ry="4" cx="12" cy="12" transform="rotate(120 12 12)"/></svg>,
+  powerbi:  <svg viewBox="0 0 24 24" fill="none" stroke="#f2c811" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="12" width="4" height="9" rx="1"/><rect x="9" y="6" width="4" height="15" rx="1"/><rect x="16" y="9" width="4" height="12" rx="1"/></svg>,
+  tableau:  <svg viewBox="0 0 24 24" fill="none" stroke="#e97627" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>,
+  python:   <svg viewBox="0 0 24 24" fill="none" stroke="#3776ab" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2C8 2 6 4 6 7v2h6v1H5C3 10 2 12 2 14s1 4 3 4h2v-3c0-2 2-3 5-3s5 1 5 3v3h2c2 0 3-2 3-4s-1-4-3-4h-6V9h6V7c0-3-2-5-6-5z"/><circle cx="9" cy="7" r="1" fill="#3776ab"/><circle cx="15" cy="17" r="1" fill="#ffd43b" stroke="#ffd43b"/></svg>,
+  sql:      <svg viewBox="0 0 24 24" fill="none" stroke="#f29111" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v4c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 9v4c0 1.66 4 3 9 3s9-1.34 9-3V9"/><path d="M3 13v4c0 1.66 4 3 9 3s9-1.34 9-3v-4"/></svg>,
+  excel:    <svg viewBox="0 0 24 24" fill="none" stroke="#217346" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 3v18M16 3v18M2 9h20M2 15h20"/><path d="M5 6l3 3-3 3" strokeWidth="1.4"/></svg>,
+  chart:    <svg viewBox="0 0 24 24" fill="none" stroke="#9f7aea" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>,
+  iot:      <svg viewBox="0 0 24 24" fill="none" stroke="#00979d" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="7" strokeDasharray="3 2"/><circle cx="12" cy="12" r="11" strokeDasharray="2 3" opacity=".4"/></svg>,
+  network:  <svg viewBox="0 0 24 24" fill="none" stroke="#1ba0d8" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="2" width="6" height="4" rx="1"/><rect x="2" y="18" width="6" height="4" rx="1"/><rect x="16" y="18" width="6" height="4" rx="1"/><path d="M12 6v4M12 10H5v4M12 10h7v4"/></svg>,
+  git:      <svg viewBox="0 0 24 24" fill="none" stroke="#f05032" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M6 9v6M9 6h4.5a3 3 0 010 6H12"/></svg>,
+  premiere: <svg viewBox="0 0 24 24" fill="none" stroke="#9999ff" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M8 16V8l4 8 4-8v8"/></svg>,
+  canva:    <svg viewBox="0 0 24 24" fill="none" stroke="#00c4cc" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12a4 4 0 108 0M12 8v8"/></svg>,
+};
+
 // ─── Skill bar ────────────────────────────────────────────────────────────────
 const SkillBar = ({ name, level, icon, tag, delay, isVisible }) => (
   <div style={{ marginBottom: '18px' }}>
     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '7px' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-        <span style={{ fontSize: '1rem' }}>{icon}</span>
+        <span style={{ width: '18px', height: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          {SKILL_ICONS[icon]
+            ? React.cloneElement(SKILL_ICONS[icon], { width: 18, height: 18 })
+            : <span style={{ fontSize: '1rem' }}>{icon}</span>
+          }
+        </span>
         <span style={{ color: 'var(--text-primary)', fontSize: '0.9rem', fontWeight: 500 }}>{name}</span>
         {tag && (
           <span style={{

@@ -5,7 +5,7 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const EMAILJS_CONFIG = {
   serviceId:  'service_m1rfm2g',
-  templateId: 'template_86nfs3a',
+  templateId: 'template_o6zwc0j',
   publicKey:  'RQ1SlgEYAVgv3rK0h',
 };
 
