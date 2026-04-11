@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { experience, education, seminars, activities } from '../data/portfolio';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
-// SVG icons for contact-style cards
 const IconBuilding = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="3" width="20" height="18" rx="1"/><path d="M9 3v18M15 3v18M2 9h20M2 15h20"/>
@@ -34,27 +33,30 @@ const Experience = () => {
         </div>
 
         <div
-          style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'stretch' }}
           className="exp-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '60px',
+            alignItems: 'stretch',
+          }}
         >
 
-          {/* Left: Experience */}
+          {/* ── LEFT: Experience ── */}
           <div style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
             transition: 'all 0.7s ease',
             display: 'flex',
             flexDirection: 'column',
-            height: '100%',
           }}>
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '28px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '28px', display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
               <span style={{ width: '30px', height: '2px', background: 'var(--accent-primary)' }} />
               Work Experience
             </h3>
 
             {experience.map((exp, i) => (
-              <div key={exp.id} className="glass" style={{ padding: '28px', marginBottom: '20px', flex: 1 }}>
-                {/* Role + subtitle */}
+              <div key={exp.id} className="glass exp-card" style={{ padding: '28px', marginBottom: i < experience.length - 1 ? '20px' : 0, flex: 1 }}>
                 <div style={{ marginBottom: '14px' }}>
                   <h4 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.05rem', color: 'var(--text-primary)', marginBottom: '4px' }}>
                     {exp.role}
@@ -64,24 +66,20 @@ const Experience = () => {
                   </p>
                 </div>
 
-                {/* Company */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-secondary)', fontSize: '0.88rem', marginBottom: '6px' }}>
                   <span style={{ color: 'var(--accent-primary)', flexShrink: 0 }}><IconBuilding /></span>
                   {exp.company}
                 </div>
 
-                {/* Location & period */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.73rem', marginBottom: '4px' }}>
                   <span style={{ flexShrink: 0 }}><IconPin /></span>
                   {exp.location} · {exp.period}
                 </div>
 
-                {/* Hours plain text */}
                 <p style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.73rem', marginBottom: '18px', paddingLeft: '20px' }}>
                   Completed {exp.hours} of hands-on IT deployment
                 </p>
 
-                {/* Expand toggle */}
                 <button
                   onClick={() => setExpanded(expanded === i ? -1 : i)}
                   style={{
@@ -109,24 +107,23 @@ const Experience = () => {
             ))}
           </div>
 
-          {/* Right: Education + Activities + Seminars */}
+          {/* ── RIGHT: Education + Activities + Seminars ── */}
           <div style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
             transition: 'all 0.7s ease 0.2s',
             display: 'flex',
             flexDirection: 'column',
-            height: '100%',
           }}>
 
-            {/* Education */}
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '28px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            {/* Education — flexShrink: 0 so it never compresses */}
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '28px', display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
               <span style={{ width: '30px', height: '2px', background: 'var(--accent-purple)' }} />
               Education
             </h3>
 
             {education.map((edu, i) => (
-              <div key={i} className="glass" style={{ padding: '28px', marginBottom: '24px' }}>
+              <div key={i} className="glass" style={{ padding: '28px', marginBottom: '24px', flexShrink: 0 }}>
                 <div style={{
                   width: '44px', height: '44px',
                   background: 'rgba(159,122,234,0.12)',
@@ -151,14 +148,14 @@ const Experience = () => {
               </div>
             ))}
 
-            {/* Activities */}
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', color: 'var(--text-primary)', margin: '32px 0 20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            {/* Activities — flexShrink: 0 */}
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', color: 'var(--text-primary)', margin: '32px 0 20px', display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
               <span style={{ width: '30px', height: '2px', background: 'var(--accent-green)' }} />
               Leadership & Activities
             </h3>
 
             {activities.map((a, i) => (
-              <div key={i} className="glass" style={{ padding: '20px', marginBottom: '16px', display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
+              <div key={i} className="glass" style={{ padding: '20px', marginBottom: '16px', display: 'flex', gap: '14px', alignItems: 'flex-start', flexShrink: 0 }}>
                 <span style={{
                   width: '36px', height: '36px', flexShrink: 0,
                   background: 'rgba(237,182,70,0.15)',
@@ -180,18 +177,21 @@ const Experience = () => {
               </div>
             ))}
 
-            {/* Seminars — flex: 1 stretches this to fill remaining height */}
-            <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0 }}>
+            {/* Seminars — flex: 1 pulls this down to match left column bottom */}
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
               <h3 style={{
-                fontFamily: 'var(--font-display)', fontSize: '1.1rem', color: 'var(--text-primary)',
-                margin: '0 0 20px', paddingTop: '32px',
+                fontFamily: 'var(--font-display)', fontSize: '1.1rem',
+                color: 'var(--text-primary)',
+                paddingTop: '32px',
+                marginBottom: '20px',
                 display: 'flex', alignItems: 'center', gap: '10px',
+                flexShrink: 0,
               }}>
                 <span style={{ width: '30px', height: '2px', background: 'var(--accent-cyan)' }} />
                 Seminars & Trainings
               </h3>
 
-              <div className="glass" style={{ padding: '24px', flex: 1, minHeight: 0 }}>
+              <div className="glass seminars-card" style={{ padding: '24px', flex: 1 }}>
                 {seminars.map((s, i) => (
                   <div key={i} style={{
                     display: 'flex', gap: '10px', alignItems: 'flex-start',
@@ -205,6 +205,7 @@ const Experience = () => {
                 ))}
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -212,6 +213,11 @@ const Experience = () => {
       <style>{`
         @media (max-width: 768px) {
           .exp-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+        }
+        /* Kill the translateY hover on these cards so it doesn't break grid alignment */
+        .exp-card:hover,
+        .seminars-card:hover {
+          transform: none !important;
         }
       `}</style>
     </section>
