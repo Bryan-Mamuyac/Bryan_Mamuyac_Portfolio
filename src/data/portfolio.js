@@ -173,6 +173,8 @@ export const experience = [
       "Contributed to ASP.NET MVC enterprise web development following MVC patterns used in production systems.",
       "Performed server patching, network troubleshooting, and desktop hardware diagnostics across departmental units.",
       "Managed server cable organization and cleaned data cabinets to maintain a structured and efficient IT infrastructure environment.",
+      "Assisted in the configuration of Windows Server 2012 R2 — including Active Directory setup, DNS and DHCP configuration, and VLAN management across network segments.",
+      "Participated in IP Brick (VoIP/PBX) telephone configuration, contributing to the company's internal communication infrastructure setup.",
     ],
     logo: "/assets/images/ulpi-logo.png",  // Add company logo if available
     color: "#63b3ed",

@@ -165,24 +165,26 @@ const Experience = () => {
               </div>
             ))}
 
-            {/* Seminars */}
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', color: 'var(--text-primary)', margin: '32px 0 20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <span style={{ width: '30px', height: '2px', background: 'var(--accent-cyan)' }} />
-              Seminars & Trainings
-            </h3>
+            {/* Seminars — fills remaining height to balance left column */}
+            <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', color: 'var(--text-primary)', margin: '32px 0 20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <span style={{ width: '30px', height: '2px', background: 'var(--accent-cyan)' }} />
+                Seminars & Trainings
+              </h3>
 
-            <div className="glass" style={{ padding: '24px', flex: 1 }}>
-              {seminars.map((s, i) => (
-                <div key={i} style={{
-                  display: 'flex', gap: '10px', alignItems: 'flex-start',
-                  paddingBottom: i < seminars.length - 1 ? '12px' : 0,
-                  marginBottom: i < seminars.length - 1 ? '12px' : 0,
-                  borderBottom: i < seminars.length - 1 ? '1px solid var(--glass-border)' : 'none',
-                }}>
-                  <span style={{ color: 'var(--accent-cyan)', fontSize: '0.8rem', marginTop: '2px', flexShrink: 0 }}>◈</span>
-                  <span style={{ color: 'var(--text-secondary)', fontSize: '0.83rem', lineHeight: 1.5 }}>{s}</span>
-                </div>
-              ))}
+              <div className="glass" style={{ padding: '24px', flex: 1 }}>
+                {seminars.map((s, i) => (
+                  <div key={i} style={{
+                    display: 'flex', gap: '10px', alignItems: 'flex-start',
+                    paddingBottom: i < seminars.length - 1 ? '12px' : 0,
+                    marginBottom: i < seminars.length - 1 ? '12px' : 0,
+                    borderBottom: i < seminars.length - 1 ? '1px solid var(--glass-border)' : 'none',
+                  }}>
+                    <span style={{ color: 'var(--accent-cyan)', fontSize: '0.8rem', marginTop: '2px', flexShrink: 0 }}>◈</span>
+                    <span style={{ color: 'var(--text-secondary)', fontSize: '0.83rem', lineHeight: 1.5 }}>{s}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
