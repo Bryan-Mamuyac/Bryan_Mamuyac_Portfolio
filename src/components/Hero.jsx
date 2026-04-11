@@ -159,7 +159,7 @@ const Hero = () => {
           color: 'var(--text-secondary)', fontSize: '1.02rem', lineHeight: 1.75,
           animation: 'fadeInUp 0.6s ease 0.35s both',
         }}>
-          Building systems that think and dashboards that speak. Bridging full-stack development
+          Building systems that automates and dashboards that speak. Bridging full-stack development
           and data analytics to build solutions that don't just run — they{' '}
           <em style={{ color: 'var(--accent-primary)', fontStyle: 'normal', fontWeight: 600 }}>reveal</em>.
         </p>

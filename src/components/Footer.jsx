@@ -44,7 +44,7 @@ const Footer = () => {
               </span>
             </div>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.7, maxWidth: '300px' }}>
-              Full Stack Developer & Data Analyst. Building systems that think and dashboards that speak.
+              Full Stack Developer & Data Analyst. Building systems that automates and dashboards that speak.
             </p>
             <div style={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
               {[

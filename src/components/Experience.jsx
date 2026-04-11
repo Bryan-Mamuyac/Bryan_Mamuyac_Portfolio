@@ -33,18 +33,18 @@ const Experience = () => {
           <h2 className="section-title">Experience & Education</h2>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'start' }}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'stretch' }}
           className="exp-grid">
 
-          {/* Left: Experience — fills to match right column */}
-          <div style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(30px)', transition: 'all 0.7s ease' }}>
+          {/* Left: Experience — stretches to match right column */}
+          <div style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(30px)', transition: 'all 0.7s ease', display: 'flex', flexDirection: 'column' }}>
             <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '28px', display: 'flex', alignItems: 'center', gap: '10px' }}>
               <span style={{ width: '30px', height: '2px', background: 'var(--accent-primary)' }} />
               Work Experience
             </h3>
 
             {experience.map((exp, i) => (
-              <div key={exp.id} className="glass" style={{ padding: '28px', marginBottom: '20px' }}>
+              <div key={exp.id} className="glass" style={{ padding: '28px', marginBottom: '20px', flex: 1 }}>
                 {/* Role + subtitle */}
                 <div style={{ marginBottom: '14px' }}>
                   <h4 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.05rem', color: 'var(--text-primary)', marginBottom: '4px' }}>
@@ -101,7 +101,7 @@ const Experience = () => {
           </div>
 
           {/* Right: Education + Activities + Seminars */}
-          <div style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(30px)', transition: 'all 0.7s ease 0.2s' }}>
+          <div style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(30px)', transition: 'all 0.7s ease 0.2s', display: 'flex', flexDirection: 'column' }}>
 
             {/* Education */}
             <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '28px', display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -171,7 +171,7 @@ const Experience = () => {
               Seminars & Trainings
             </h3>
 
-            <div className="glass" style={{ padding: '24px' }}>
+            <div className="glass" style={{ padding: '24px', flex: 1 }}>
               {seminars.map((s, i) => (
                 <div key={i} style={{
                   display: 'flex', gap: '10px', alignItems: 'flex-start',

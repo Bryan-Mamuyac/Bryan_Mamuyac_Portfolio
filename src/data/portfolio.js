@@ -172,6 +172,7 @@ export const experience = [
       "Configured and applied SQL Server Agent jobs for automated task expiry, scheduled maintenance, and background job processing within the Internify system.",
       "Contributed to ASP.NET MVC enterprise web development following MVC patterns used in production systems.",
       "Performed server patching, network troubleshooting, and desktop hardware diagnostics across departmental units.",
+      "Managed server cable organization and cleaned data cabinets to maintain a structured and efficient IT infrastructure environment.",
     ],
     logo: "/assets/images/ulpi-logo.png",  // Add company logo if available
     color: "#63b3ed",
