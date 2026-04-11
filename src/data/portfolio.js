@@ -11,7 +11,7 @@ export const personalInfo = {
   location: "Aringay, La Union, Philippines",
   email: "bryanmamuyac24@yahoo.com",
   phone: "09957691537",
-  bio: "Information Technology graduate from DMMMSU-MLUC, major in Business Analytics. Building systems that think and dashboards that speak. Thriving at the intersection of clean backend logic and sharp data visualization — turning complex requirements into seamless solutions and raw data into actionable insights.",
+  bio: "Information Technology graduate from DMMMSU-MLUC, major in Business Analytics. Building systems that automates and dashboards that speak. Bridging full-stack development and data analytics to build solutions that don't just run — they reveal.",
   bio2: "Currently seeking opportunities in Full Stack Development and Data Analytics where I can bridge these two disciplines to build products that don't just run, but reveal.",
   avatar: "/assets/images/bryan.jpg",          // Replace with your actual photo
   resumeUrl: "/assets/resume/Mamuyac_Bryan_JR_Resume.pdf",
@@ -158,7 +158,7 @@ export const experience = [
   {
     id: 1,
     role: "IT Department Intern",
-    subtitle: "Full-Stack Developer & Data Analyst",
+    subtitle: "Full-Stack Developer & Data Analyst · QA & User Testing",
     company: "Universal Leaf Philippines, Inc. (ULPI)",
     location: "Sta. Rita Norte, Agoo, La Union",
     period: "January 2026 – April 2026",
@@ -168,9 +168,10 @@ export const experience = [
       "Designed and deployed a Power BI data visualization dashboard from raw company Excel data, delivering clearer operational insights for the IT department.",
       "Sole full-stack developer of Internify — a web-based OJT Management System built with ASP.NET Core MVC 8 and SQL Server, supporting multi-branch trainee supervision.",
       "Implemented real-time chat via SignalR, task management, file handling, and performance tracking with multi-role access control.",
+      "Performed Quality Assurance (QA) and User Testing on the Internify system — identifying and resolving bugs, validating user flows, and ensuring system reliability across Admin, Employee, and OJT roles.",
+      "Configured and applied SQL Server Agent jobs for automated task expiry, scheduled maintenance, and background job processing within the Internify system.",
       "Contributed to ASP.NET MVC enterprise web development following MVC patterns used in production systems.",
       "Performed server patching, network troubleshooting, and desktop hardware diagnostics across departmental units.",
-      "Completed 520 hours of hands-on IT deployment spanning software development, data analytics, and infrastructure support.",
     ],
     logo: "/assets/images/ulpi-logo.png",  // Add company logo if available
     color: "#63b3ed",

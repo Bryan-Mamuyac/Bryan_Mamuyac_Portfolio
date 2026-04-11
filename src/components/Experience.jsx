@@ -2,6 +2,25 @@ import React, { useState } from 'react';
 import { experience, education, seminars, activities } from '../data/portfolio';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
+// SVG icons for contact-style cards
+const IconBuilding = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="3" width="20" height="18" rx="1"/><path d="M9 3v18M15 3v18M2 9h20M2 15h20"/>
+  </svg>
+);
+
+const IconPin = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+  </svg>
+);
+
+const IconGrad = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+  </svg>
+);
+
 const Experience = () => {
   const [ref, isVisible] = useScrollAnimation();
   const [expanded, setExpanded] = useState(0);
@@ -17,7 +36,7 @@ const Experience = () => {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'start' }}
           className="exp-grid">
 
-          {/* Left: Experience */}
+          {/* Left: Experience — fills to match right column */}
           <div style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(30px)', transition: 'all 0.7s ease' }}>
             <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '28px', display: 'flex', alignItems: 'center', gap: '10px' }}>
               <span style={{ width: '30px', height: '2px', background: 'var(--accent-primary)' }} />
@@ -26,29 +45,34 @@ const Experience = () => {
 
             {experience.map((exp, i) => (
               <div key={exp.id} className="glass" style={{ padding: '28px', marginBottom: '20px' }}>
-                {/* Top */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px', flexWrap: 'wrap', gap: '8px' }}>
-                  <div>
-                    <h4 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.05rem', color: 'var(--text-primary)', marginBottom: '2px' }}>
-                      {exp.role}
-                    </h4>
-                    <p style={{ color: 'var(--accent-primary)', fontSize: '0.88rem', fontWeight: 500 }}>
-                      {exp.subtitle}
-                    </p>
-                  </div>
+                {/* Role + subtitle */}
+                <div style={{ marginBottom: '14px' }}>
+                  <h4 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.05rem', color: 'var(--text-primary)', marginBottom: '4px' }}>
+                    {exp.role}
+                  </h4>
+                  <p style={{ color: 'var(--accent-primary)', fontSize: '0.83rem', fontWeight: 500, lineHeight: 1.4 }}>
+                    {exp.subtitle}
+                  </p>
                 </div>
 
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', marginBottom: '4px' }}>
-                  🏢 {exp.company}
-                </p>
-                <p style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', marginBottom: '4px' }}>
-                  📍 {exp.location} · {exp.period}
-                </p>
-                <p style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', marginBottom: '16px' }}>
+                {/* Company */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-secondary)', fontSize: '0.88rem', marginBottom: '6px' }}>
+                  <span style={{ color: 'var(--accent-primary)', flexShrink: 0 }}><IconBuilding /></span>
+                  {exp.company}
+                </div>
+
+                {/* Location & period */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.73rem', marginBottom: '4px' }}>
+                  <span style={{ flexShrink: 0 }}><IconPin /></span>
+                  {exp.location} · {exp.period}
+                </div>
+
+                {/* Hours plain text */}
+                <p style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.73rem', marginBottom: '18px', paddingLeft: '20px' }}>
                   Completed {exp.hours} of hands-on IT deployment
                 </p>
 
-                {/* Expandable highlights */}
+                {/* Expand toggle */}
                 <button
                   onClick={() => setExpanded(expanded === i ? -1 : i)}
                   style={{
@@ -76,8 +100,9 @@ const Experience = () => {
             ))}
           </div>
 
-          {/* Right: Education + Seminars + Activities */}
+          {/* Right: Education + Activities + Seminars */}
           <div style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(30px)', transition: 'all 0.7s ease 0.2s' }}>
+
             {/* Education */}
             <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '28px', display: 'flex', alignItems: 'center', gap: '10px' }}>
               <span style={{ width: '30px', height: '2px', background: 'var(--accent-purple)' }} />
@@ -88,12 +113,15 @@ const Experience = () => {
               <div key={i} className="glass" style={{ padding: '28px', marginBottom: '24px' }}>
                 <div style={{
                   width: '44px', height: '44px',
-                  background: 'rgba(159,122,234,0.1)',
-                  border: '1px solid rgba(159,122,234,0.25)',
+                  background: 'rgba(159,122,234,0.12)',
+                  border: '1px solid rgba(159,122,234,0.28)',
                   borderRadius: '12px',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '1.4rem', marginBottom: '16px',
-                }}>🎓</div>
+                  color: 'var(--accent-purple)',
+                  marginBottom: '16px',
+                }}>
+                  <IconGrad />
+                </div>
                 <h4 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1rem', color: 'var(--text-primary)', marginBottom: '4px' }}>
                   {edu.degree}
                 </h4>
@@ -115,7 +143,18 @@ const Experience = () => {
 
             {activities.map((a, i) => (
               <div key={i} className="glass" style={{ padding: '20px', marginBottom: '16px', display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
-                <span style={{ fontSize: '1.5rem' }}>{a.icon}</span>
+                {/* Trophy SVG instead of emoji */}
+                <span style={{
+                  width: '36px', height: '36px', flexShrink: 0,
+                  background: 'rgba(237,182,70,0.15)',
+                  border: '1px solid rgba(237,182,70,0.3)',
+                  borderRadius: '10px',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#edb246" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M6 9H3V4h3M18 9h3V4h-3"/><path d="M9 21h6M12 17v4"/><path d="M6 4h12v8a6 6 0 01-12 0V4z"/>
+                  </svg>
+                </span>
                 <div>
                   <p style={{ fontFamily: 'var(--font-display)', fontWeight: 600, color: 'var(--text-primary)', fontSize: '0.92rem', marginBottom: '2px' }}>
                     {a.title}

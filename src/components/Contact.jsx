@@ -92,14 +92,51 @@ const Contact = () => {
 
             {/* Contact cards */}
             {[
-              { icon: '📧', label: 'Email',    value: contactInfo.email,    href: `mailto:${contactInfo.email}` },
-              { icon: '📱', label: 'Phone',    value: contactInfo.phone,    href: `tel:${contactInfo.phone}` },
-              { icon: '📍', label: 'Location', value: contactInfo.location, href: null },
+              {
+                label: 'Email',
+                value: contactInfo.email,
+                href: `mailto:${contactInfo.email}`,
+                icon: (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                ),
+              },
+              {
+                label: 'Phone',
+                value: contactInfo.phone,
+                href: `tel:${contactInfo.phone}`,
+                icon: (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.66A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.51-1.51a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+                  </svg>
+                ),
+              },
+              {
+                label: 'Location',
+                value: contactInfo.location,
+                href: null,
+                icon: (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                ),
+              },
             ].map(item => (
               <div key={item.label} className="glass" style={{ padding: '18px 20px', marginBottom: '12px', display: 'flex', gap: '14px', alignItems: 'center' }}>
-                <span style={{ fontSize: '1.3rem' }}>{item.icon}</span>
+                <span style={{
+                  width: '38px', height: '38px', flexShrink: 0,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  background: 'rgba(99,179,237,0.1)',
+                  border: '1px solid rgba(99,179,237,0.2)',
+                  borderRadius: '10px',
+                }}>
+                  {item.icon}
+                </span>
                 <div>
-                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{item.label}</p>
+                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '2px' }}>{item.label}</p>
                   {item.href
                     ? <a href={item.href} style={{ color: 'var(--accent-primary)', fontSize: '0.9rem', textDecoration: 'none', fontWeight: 500 }}>{item.value}</a>
                     : <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>{item.value}</p>
