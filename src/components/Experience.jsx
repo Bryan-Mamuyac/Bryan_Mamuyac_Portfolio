@@ -101,7 +101,7 @@ const Experience = () => {
           </div>
 
           {/* Right: Education + Activities + Seminars */}
-          <div style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(30px)', transition: 'all 0.7s ease 0.2s', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(30px)', transition: 'all 0.7s ease 0.2s', display: 'flex', flexDirection: 'column', height: '100%' }}>
 
             {/* Education */}
             <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '28px', display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -166,13 +166,13 @@ const Experience = () => {
             ))}
 
             {/* Seminars — fills remaining height to balance left column */}
-            <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0 }}>
               <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', color: 'var(--text-primary)', margin: '32px 0 20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <span style={{ width: '30px', height: '2px', background: 'var(--accent-cyan)' }} />
                 Seminars & Trainings
               </h3>
 
-              <div className="glass" style={{ padding: '24px', flex: 1 }}>
+                <div className="glass" style={{ padding: '24px', flex: 1, minHeight: 0 }}>
                 {seminars.map((s, i) => (
                   <div key={i} style={{
                     display: 'flex', gap: '10px', alignItems: 'flex-start',
