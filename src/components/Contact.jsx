@@ -2,23 +2,10 @@ import React, { useState, useRef } from 'react';
 import { contactInfo, personalInfo } from '../data/portfolio';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
-// ─────────────────────────────────────────────────────────────────────────────
-// HOW TO ACTIVATE REAL EMAIL DELIVERY (EmailJS — free, no backend needed):
-//
-//  1. Go to https://www.emailjs.com and create a FREE account
-//  2. Add an Email Service (Gmail → connect your bryanmamuyac24@yahoo.com or Gmail)
-//  3. Create an Email Template with these variables:
-//       {{from_name}}   {{from_email}}   {{subject}}   {{message}}
-//  4. Copy your:
-//       - Service ID   (looks like: service_xxxxxxx)
-//       - Template ID  (looks like: template_xxxxxxx)
-//       - Public Key   (looks like: xxxxxxxxxxxxxx)
-//  5. Paste them below in the EMAILJS_CONFIG object
-// ─────────────────────────────────────────────────────────────────────────────
 const EMAILJS_CONFIG = {
-  serviceId:  'YOUR_SERVICE_ID',    // ← replace
-  templateId: 'YOUR_TEMPLATE_ID',  // ← replace
-  publicKey:  'YOUR_PUBLIC_KEY',    // ← replace
+  serviceId:  'service_m1rfm2g',
+  templateId: 'template_86nfs3a',
+  publicKey:  'RQ1SlgEYAVgv3rK0h',
 };
 
 const isConfigured = !Object.values(EMAILJS_CONFIG).some(v => v.startsWith('YOUR_'));

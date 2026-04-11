@@ -161,7 +161,7 @@ export const experience = [
     subtitle: "Full-Stack Developer & Data Analyst",
     company: "Universal Leaf Philippines, Inc. (ULPI)",
     location: "Sta. Rita Norte, Agoo, La Union",
-    period: "January 2026 – May 2026",
+    period: "January 2026 – April 2026",
     hours: "520 Hours",
     type: "OJT / Internship",
     highlights: [
