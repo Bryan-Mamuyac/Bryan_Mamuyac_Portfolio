@@ -183,20 +183,44 @@ const SkillBar = ({ name, level, icon, tag, delay, isVisible }) => (
   </div>
 );
 
+// ─── Shared SVG icons (same ones used in About.jsx career cards) ─────────────
+const IconLaptop = ({ color = 'currentColor', size = 16 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="3" width="20" height="14" rx="2"/>
+    <path d="M8 21h8M12 17v4"/>
+    <path d="M8 9l2 2-2 2M13 13h3"/>
+  </svg>
+);
+
+const IconBarChart = ({ color = 'currentColor', size = 16 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="18" y1="20" x2="18" y2="10"/>
+    <line x1="12" y1="20" x2="12" y2="4"/>
+    <line x1="6"  y1="20" x2="6"  y2="14"/>
+    <line x1="2"  y1="20" x2="22" y2="20"/>
+  </svg>
+);
+
+const IconWrench = ({ color = 'currentColor', size = 16 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+  </svg>
+);
+
 const tabs = [
-  { key: 'fullstack',     label: '⚡ Full Stack Dev'   },
-  { key: 'dataAnalytics', label: '📊 Data & Analytics' },
-  { key: 'other',         label: '🛠️ Other Tools'      },
+  { key: 'fullstack',     label: 'Full Stack Dev',   Icon: IconLaptop,   color: 'var(--accent-primary)' },
+  { key: 'dataAnalytics', label: 'Data & Analytics', Icon: IconBarChart, color: 'var(--accent-purple)'  },
+  { key: 'other',         label: 'Other Tools',      Icon: IconWrench,   color: 'var(--text-secondary)' },
 ];
 
-const RowLabel = ({ icon, title, color }) => (
+const RowLabel = ({ Icon, title, color }) => (
   <div style={{
     display: 'inline-flex', alignItems: 'center', gap: '8px',
     padding: '5px 14px',
     background: `${color}15`, border: `1px solid ${color}30`,
     borderRadius: '50px', marginBottom: '12px', marginLeft: '20px',
   }}>
-    <span style={{ fontSize: '0.9rem' }}>{icon}</span>
+    <Icon color={color} size={14} />
     <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
       {title}
     </span>
@@ -229,7 +253,7 @@ const Skills = () => {
           overflow: 'hidden',        /* clips the scrolling track */
           borderRadius: '20px',
         }}>
-          <RowLabel icon="⚡" title="Full Stack Development" color="var(--accent-primary)" />
+          <RowLabel Icon={IconLaptop}   title="Full Stack Development" color="var(--accent-primary)" />
           <MarqueeRow items={FULLSTACK_ROW} reverse={false} speed={36} />
         </div>
 
@@ -240,7 +264,7 @@ const Skills = () => {
           overflow: 'hidden',
           borderRadius: '20px',
         }}>
-          <RowLabel icon="📊" title="Data & Analytics" color="var(--accent-purple)" />
+          <RowLabel Icon={IconBarChart} title="Data & Analytics" color="var(--accent-purple)" />
           <MarqueeRow items={DATA_ROW} reverse={true} speed={18} />
         </div>
 
@@ -261,7 +285,10 @@ const Skills = () => {
                 cursor: 'pointer', backdropFilter: 'blur(10px)',
                 transition: 'var(--transition)',
               }}
-            >{tab.label}</button>
+            >
+              <tab.Icon color={activeTab === tab.key ? 'var(--accent-primary)' : 'var(--text-secondary)'} size={15} />
+              {tab.label}
+            </button>
           ))}
         </div>
 

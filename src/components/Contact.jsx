@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import { contactInfo, personalInfo } from '../data/portfolio';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
@@ -7,8 +8,6 @@ const EMAILJS_CONFIG = {
   templateId: 'template_86nfs3a',
   publicKey:  'RQ1SlgEYAVgv3rK0h',
 };
-
-const isConfigured = !Object.values(EMAILJS_CONFIG).some(v => v.startsWith('YOUR_'));
 
 const Contact = () => {
   const [ref, isVisible] = useScrollAnimation();
@@ -24,39 +23,26 @@ const Contact = () => {
     setStatus('sending');
     setErrorMsg('');
 
-    if (isConfigured) {
-      // ── Real EmailJS send ──────────────────────────────────────────────────
-      try {
-        const { default: emailjs } = await import('@emailjs/browser');
-        await emailjs.send(
-          EMAILJS_CONFIG.serviceId,
-          EMAILJS_CONFIG.templateId,
-          {
-            from_name:  formData.name,
-            from_email: formData.email,
-            subject:    formData.subject || 'Portfolio Inquiry',
-            message:    formData.message,
-            to_email:   contactInfo.email,
-          },
-          EMAILJS_CONFIG.publicKey,
-        );
-        setStatus('success');
-        setFormData({ name: '', email: '', subject: '', message: '' });
-        setTimeout(() => setStatus('idle'), 5000);
-      } catch (err) {
-        setStatus('error');
-        setErrorMsg('Failed to send. Please email directly at ' + contactInfo.email);
-      }
-    } else {
-      // ── Fallback: open mail client (until EmailJS is configured) ──────────
-      const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`;
-      window.open(
-        `mailto:${contactInfo.email}?subject=${encodeURIComponent(formData.subject || 'Portfolio Inquiry')}&body=${encodeURIComponent(body)}`,
-        '_blank',
+    try {
+      await emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        {
+          from_name:  formData.name,
+          from_email: formData.email,
+          subject:    formData.subject || 'Portfolio Inquiry',
+          message:    formData.message,
+          to_email:   contactInfo.email,
+        },
+        EMAILJS_CONFIG.publicKey,
       );
       setStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
       setTimeout(() => setStatus('idle'), 5000);
+    } catch (err) {
+      console.error('EmailJS error:', err);
+      setStatus('error');
+      setErrorMsg('Failed to send. Please email directly at ' + contactInfo.email);
     }
   };
 
@@ -155,20 +141,11 @@ const Contact = () => {
           {/* Right: Form */}
           <div style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateX(0)' : 'translateX(30px)', transition: 'all 0.7s ease 0.2s' }}>
             <div className="glass" style={{ padding: '36px' }}>
-              <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '8px' }}>
+              <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '24px' }}>
                 Send a Message
               </h3>
 
-              {/* EmailJS setup notice — shown only when not configured */}
-              {!isConfigured && (
-                <div style={{ padding: '10px 14px', background: 'rgba(242,199,17,0.08)', border: '1px solid rgba(242,199,17,0.2)', borderRadius: '8px', marginBottom: '20px' }}>
-                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: '#f2c811', lineHeight: 1.5 }}>
-                    ⚙️ <strong>Setup needed:</strong> Configure EmailJS in Contact.jsx to receive messages directly in your inbox. Until then, the form will open your email client.
-                  </p>
-                </div>
-              )}
-
-              <form ref={formRef} onSubmit={handleSubmit} style={{ marginTop: '16px' }}>
+              <form ref={formRef} onSubmit={handleSubmit}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
                   <div>
                     <label style={{ display: 'block', fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-muted)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Your Name</label>
@@ -207,8 +184,8 @@ const Contact = () => {
                   disabled={status === 'sending'}
                   style={{ width: '100%', justifyContent: 'center', opacity: status === 'sending' ? 0.7 : 1 }}>
                   {status === 'sending' && <span>Sending...</span>}
-                  {status === 'success' && <span>✓ Message Sent!</span>}
-                  {status === 'error'   && <span>✗ Failed — try again</span>}
+                  {status === 'success' && <span>Message Sent Successfully!</span>}
+                  {status === 'error'   && <span>Failed — try again</span>}
                   {status === 'idle'    && (
                     <>
                       <span>Send Message</span>

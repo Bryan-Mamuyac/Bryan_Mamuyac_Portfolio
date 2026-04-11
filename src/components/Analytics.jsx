@@ -400,7 +400,14 @@ const Analytics = () => {
           gap: '14px',
           flexWrap: 'wrap',
         }}>
-          <span style={{ fontSize: '1.1rem', marginTop: '2px' }}>📊</span>
+          <span style={{ marginTop: '3px', flexShrink: 0 }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"/>
+              <line x1="12" y1="20" x2="12" y2="4"/>
+              <line x1="6"  y1="20" x2="6"  y2="14"/>
+              <line x1="2"  y1="20" x2="22" y2="20"/>
+            </svg>
+          </span>
           <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.7, flex: 1 }}>
             <strong style={{ color: 'var(--accent-primary)' }}>Takeaway:</strong>{' '}
             During my 520-hour internship at Universal Leaf Philippines, I grew across two parallel tracks — Full Stack Development
