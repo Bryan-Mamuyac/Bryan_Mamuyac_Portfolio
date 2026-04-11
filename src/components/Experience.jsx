@@ -33,11 +33,20 @@ const Experience = () => {
           <h2 className="section-title">Experience & Education</h2>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'stretch' }}
-          className="exp-grid">
+        <div
+          style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'stretch' }}
+          className="exp-grid"
+        >
 
-          {/* Left: Experience — stretches to match right column */}
-          <div style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(30px)', transition: 'all 0.7s ease', display: 'flex', flexDirection: 'column' }}>
+          {/* Left: Experience */}
+          <div style={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+            transition: 'all 0.7s ease',
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100%',
+          }}>
             <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '28px', display: 'flex', alignItems: 'center', gap: '10px' }}>
               <span style={{ width: '30px', height: '2px', background: 'var(--accent-primary)' }} />
               Work Experience
@@ -101,7 +110,14 @@ const Experience = () => {
           </div>
 
           {/* Right: Education + Activities + Seminars */}
-            <div style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(30px)', transition: 'all 0.7s ease 0.2s', display: 'flex', flexDirection: 'column', height: '100%' }}>
+          <div style={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+            transition: 'all 0.7s ease 0.2s',
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100%',
+          }}>
 
             {/* Education */}
             <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '28px', display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -143,7 +159,6 @@ const Experience = () => {
 
             {activities.map((a, i) => (
               <div key={i} className="glass" style={{ padding: '20px', marginBottom: '16px', display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
-                {/* Trophy SVG instead of emoji */}
                 <span style={{
                   width: '36px', height: '36px', flexShrink: 0,
                   background: 'rgba(237,182,70,0.15)',
@@ -165,14 +180,18 @@ const Experience = () => {
               </div>
             ))}
 
-            {/* Seminars — fills remaining height to balance left column */}
+            {/* Seminars — flex: 1 stretches this to fill remaining height */}
             <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0 }}>
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', color: 'var(--text-primary)', margin: '32px 0 20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <h3 style={{
+                fontFamily: 'var(--font-display)', fontSize: '1.1rem', color: 'var(--text-primary)',
+                margin: '0 0 20px', paddingTop: '32px',
+                display: 'flex', alignItems: 'center', gap: '10px',
+              }}>
                 <span style={{ width: '30px', height: '2px', background: 'var(--accent-cyan)' }} />
                 Seminars & Trainings
               </h3>
 
-                <div className="glass" style={{ padding: '24px', flex: 1, minHeight: 0 }}>
+              <div className="glass" style={{ padding: '24px', flex: 1, minHeight: 0 }}>
                 {seminars.map((s, i) => (
                   <div key={i} style={{
                     display: 'flex', gap: '10px', alignItems: 'flex-start',
