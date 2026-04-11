@@ -36,22 +36,16 @@ const Experience = () => {
                       {exp.subtitle}
                     </p>
                   </div>
-                  <span style={{
-                    padding: '4px 12px',
-                    background: 'rgba(99,179,237,0.1)',
-                    border: '1px solid rgba(99,179,237,0.25)',
-                    borderRadius: '50px',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.7rem',
-                    color: 'var(--accent-primary)',
-                  }}>{exp.hours}</span>
                 </div>
 
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', marginBottom: '4px' }}>
                   🏢 {exp.company}
                 </p>
-                <p style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', marginBottom: '16px' }}>
+                <p style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', marginBottom: '4px' }}>
                   📍 {exp.location} · {exp.period}
+                </p>
+                <p style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', marginBottom: '16px' }}>
+                  Completed {exp.hours} of hands-on IT deployment
                 </p>
 
                 {/* Expandable highlights */}

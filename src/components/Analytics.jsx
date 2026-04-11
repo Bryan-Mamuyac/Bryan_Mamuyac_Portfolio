@@ -33,10 +33,10 @@ const techDistribution = [
 ];
 
 const kpiData = [
-  { label: 'OJT Hours',        value: '520',  sub: 'Completed',        icon: '⏱️',  color: '#63b3ed' },
-  { label: 'Projects Built',   value: '5+',   sub: 'Deployed/Delivered',icon: '🚀',  color: '#9f7aea' },
-  { label: 'Tech Stack',       value: '18+',  sub: 'Technologies',     icon: '🛠️',  color: '#4dd0e1' },
-  { label: 'Proficiency',      value: '88%',  sub: 'Avg skill level',  icon: '📈',  color: '#68d391' },
+  { label: 'Projects Built',    value: '5',    sub: 'Full-stack, IoT & game',    color: '#63b3ed' },
+  { label: 'Internship Hours',  value: '520',  sub: 'Universal Leaf PH · 2026',  color: '#9f7aea' },
+  { label: 'Technologies',      value: '18',   sub: 'Languages, tools & stacks', color: '#4dd0e1' },
+  { label: 'Career Tracks',     value: '2',    sub: 'Full Stack + Data Analytics',color: '#68d391' },
 ];
 
 // ─── Glassmorphism Line Chart ─────────────────────────────────────────────────
@@ -243,7 +243,7 @@ const DonutChart = ({ data, isVisible }) => {
 };
 
 // ─── KPI Card ─────────────────────────────────────────────────────────────────
-const KPICard = ({ label, value, sub, icon, color, delay, isVisible }) => {
+const KPICard = ({ label, value, sub, color, delay, isVisible }) => {
   const [displayed, setDisplayed] = useState('0');
 
   useEffect(() => {
@@ -267,30 +267,35 @@ const KPICard = ({ label, value, sub, icon, color, delay, isVisible }) => {
 
   return (
     <div className="glass" style={{
-      padding: '24px 20px',
-      textAlign: 'center',
+      padding: '28px 20px',
       borderTop: `2px solid ${color}`,
       position: 'relative',
       overflow: 'hidden',
     }}>
+      {/* Subtle top glow */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: `radial-gradient(ellipse at 50% 0%, ${color}12, transparent 70%)`,
+        background: `radial-gradient(ellipse at 50% 0%, ${color}10, transparent 65%)`,
         pointerEvents: 'none',
       }}/>
-      <div style={{ fontSize: '1.8rem', marginBottom: '10px' }}>{icon}</div>
       <div style={{
         fontFamily: 'var(--font-display)',
-        fontSize: '2.2rem',
+        fontSize: '2.4rem',
         fontWeight: 800,
         color,
-        marginBottom: '4px',
-        textShadow: `0 0 20px ${color}60`,
+        marginBottom: '6px',
+        textShadow: `0 0 24px ${color}50`,
+        lineHeight: 1,
       }}>{displayed}</div>
-      <div style={{ fontFamily: 'var(--font-display)', fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '2px' }}>
-        {label}
-      </div>
-      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: 'var(--text-muted)' }}>{sub}</div>
+      <div style={{
+        fontFamily: 'var(--font-display)',
+        fontSize: '0.9rem', fontWeight: 700,
+        color: 'var(--text-primary)', marginBottom: '4px',
+      }}>{label}</div>
+      <div style={{
+        fontFamily: 'var(--font-mono)',
+        fontSize: '0.68rem', color: 'var(--text-muted)',
+      }}>{sub}</div>
     </div>
   );
 };
@@ -388,18 +393,19 @@ const Analytics = () => {
           marginTop: '20px',
           padding: '18px 24px',
           background: 'rgba(99,179,237,0.06)',
-          border: '1px solid rgba(99,179,237,0.2)',
+          border: '1px solid rgba(99,179,237,0.18)',
           borderRadius: '14px',
           display: 'flex',
-          alignItems: 'center',
+          alignItems: 'flex-start',
           gap: '14px',
           flexWrap: 'wrap',
         }}>
-          <span style={{ fontSize: '1.4rem' }}>💡</span>
-          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-            <strong style={{ color: 'var(--accent-primary)' }}>Data Insight:</strong>{' '}
-            Full Stack proficiency grew by <strong style={{ color: 'var(--accent-cyan)' }}>+38%</strong> and Data Analytics by{' '}
-            <strong style={{ color: 'var(--accent-purple)' }}>+58%</strong> over the internship period — reflecting a deliberate push toward a dual-track career.
+          <span style={{ fontSize: '1.1rem', marginTop: '2px' }}>📊</span>
+          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.7, flex: 1 }}>
+            <strong style={{ color: 'var(--accent-primary)' }}>Takeaway:</strong>{' '}
+            During my 520-hour internship at Universal Leaf Philippines, I grew across two parallel tracks — Full Stack Development
+            (INTERNIFY, Power BI Embedded) and Data Analytics (Power BI dashboards, Excel pipelines).
+            The goal is a dual-track career that bridges clean backend engineering with actionable data insights.
           </p>
         </div>
       </div>

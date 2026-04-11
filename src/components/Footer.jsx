@@ -21,13 +21,26 @@ const Footer = () => {
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
               <div style={{
                 width: '38px', height: '38px',
-                background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-cyan))',
                 borderRadius: '10px',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1rem', color: '#fff',
-              }}>BM</div>
+                padding: '2px',
+                background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-cyan))',
+                flexShrink: 0,
+              }}>
+                <div style={{ width: '100%', height: '100%', borderRadius: '8px', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
+                  <img
+                    src="/assets/images/bryan.jpg"
+                    alt="Bryan"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+                    onError={e => {
+                      e.target.style.display = 'none';
+                      e.target.parentElement.style.cssText += 'display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#63b3ed,#4dd0e1);';
+                      e.target.parentElement.innerHTML = '<span style="font-size:0.8rem;font-weight:800;color:#fff;font-family:sans-serif">BM</span>';
+                    }}
+                  />
+                </div>
+              </div>
               <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, color: 'var(--text-primary)' }}>
-                Bryan Mamuyac JR.
+                Bryan Mamuyac
               </span>
             </div>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.7, maxWidth: '300px' }}>
@@ -118,11 +131,11 @@ const Footer = () => {
           display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px',
         }}>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
-            © {year} Bryan Mamuyac JR. Built with React + Vite.
+            © {year} Bryan Mamuyac. Built with React + Vite.
           </p>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', fontFamily: 'var(--font-mono)' }}>
             Designed & Developed by{' '}
-            <span style={{ color: 'var(--accent-primary)' }}>Bryan Mamuyac JR.</span>
+            <span style={{ color: 'var(--accent-primary)' }}>Bryan Mamuyac</span>
           </p>
         </div>
       </div>

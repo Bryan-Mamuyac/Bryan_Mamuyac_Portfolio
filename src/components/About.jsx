@@ -2,11 +2,12 @@ import React from 'react';
 import { personalInfo, careerPath } from '../data/portfolio';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
+// Real, honest stats — no icons, no made-up proficiency score
 const stats = [
-  { value: '520', label: 'OJT Hours', icon: '⏱️' },
-  { value: '5+', label: 'Projects Built', icon: '🚀' },
-  { value: '2', label: 'Tech Domains', icon: '🎯' },
-  { value: '2026', label: 'BS IT Graduate', icon: '🎓' },
+  { value: '5',    label: 'Projects Built',    sub: 'Full-stack & IoT systems'  },
+  { value: 'Jan–May',label: 'Internship',      sub: '2026 · Universal Leaf PH'  },
+  { value: '2',    label: 'Career Tracks',     sub: 'Full Stack + Data Analytics'},
+  { value: '2026', label: 'BS IT Graduate',    sub: 'DMMMSU-MLUC · La Union'    },
 ];
 
 const About = () => {
@@ -35,10 +36,10 @@ const About = () => {
             {/* Quick facts */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {[
-                { label: 'Degree', value: 'BS Information Technology · Business Analytics' },
-                { label: 'School', value: 'DMMMSU-MLUC, San Fernando City, La Union' },
+                { label: 'Degree',   value: 'BS Information Technology · Business Analytics' },
+                { label: 'School',   value: 'DMMMSU-MLUC, San Fernando City, La Union' },
                 { label: 'Location', value: 'Aringay, La Union, Philippines' },
-                { label: 'Email', value: personalInfo.email },
+                { label: 'Email',    value: personalInfo.email },
               ].map(fact => (
                 <div key={fact.label} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
                   <span style={{
@@ -53,26 +54,34 @@ const About = () => {
 
           {/* Right: Stats + Career paths */}
           <div style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateX(0)' : 'translateX(30px)', transition: 'all 0.7s ease 0.2s' }}>
-            {/* Stats Grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '24px' }}>
+
+            {/* Stats Grid — no icons, clean numbers */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', marginBottom: '24px' }}>
               {stats.map((stat, i) => (
-                <div key={i} className="glass" style={{ padding: '24px', textAlign: 'center' }}>
-                  <div style={{ fontSize: '1.8rem', marginBottom: '8px' }}>{stat.icon}</div>
+                <div key={i} className="glass" style={{ padding: '22px 20px' }}>
                   <div style={{
                     fontFamily: 'var(--font-display)',
-                    fontSize: '2rem', fontWeight: 800,
+                    fontSize: stat.value.length > 4 ? '1.3rem' : '2rem',
+                    fontWeight: 800,
                     background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-cyan))',
                     WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
+                    marginBottom: '4px',
+                    lineHeight: 1.1,
                   }}>{stat.value}</div>
-                  <div style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', marginTop: '4px' }}>{stat.label}</div>
+                  <div style={{ color: 'var(--text-primary)', fontSize: '0.88rem', fontWeight: 600, marginBottom: '2px' }}>
+                    {stat.label}
+                  </div>
+                  <div style={{ color: 'var(--text-muted)', fontSize: '0.72rem', fontFamily: 'var(--font-mono)' }}>
+                    {stat.sub}
+                  </div>
                 </div>
               ))}
             </div>
 
             {/* Career paths */}
             {Object.values(careerPath).map((path, i) => (
-              <div key={i} className="glass" style={{ padding: '20px', marginBottom: '16px' }}>
+              <div key={i} className="glass" style={{ padding: '20px', marginBottom: '14px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
                   <span style={{
                     width: '36px', height: '36px',
@@ -113,3 +122,4 @@ const About = () => {
 };
 
 export default About;
+

@@ -131,8 +131,6 @@ const Hero = () => {
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
           }}>Mamuyac</span>
-          <br />
-          <span style={{ fontSize: '0.55em', fontWeight: 600, color: 'var(--text-secondary)' }}></span>
         </h1>
 
         {/* Typewriter */}
