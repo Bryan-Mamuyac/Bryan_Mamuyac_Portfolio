@@ -20,7 +20,7 @@ const Navbar = () => {
       position: 'fixed',
       top: 0, left: 0, right: 0,
       zIndex: 1000,
-      padding: '0 24px',
+      padding: '0 16px',
       height: '70px',
       display: 'flex',
       alignItems: 'center',
@@ -30,22 +30,17 @@ const Navbar = () => {
       borderBottom: scrolled ? '1px solid var(--glass-border)' : '1px solid transparent',
       transition: 'all 0.4s ease',
     }}>
-      {/* Logo — profile photo */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+
+      {/* Logo */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
         <div style={{
           width: '38px', height: '38px',
-          borderRadius: '10px',
-          padding: '2px',
+          borderRadius: '10px', padding: '2px',
           background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-cyan))',
           boxShadow: '0 4px 15px var(--accent-glow)',
           flexShrink: 0,
         }}>
-          <div style={{
-            width: '100%', height: '100%',
-            borderRadius: '8px',
-            overflow: 'hidden',
-            background: 'var(--bg-secondary)',
-          }}>
+          <div style={{ width: '100%', height: '100%', borderRadius: '8px', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
             <img
               src="/assets/images/bryan.jpg"
               alt="Bryan"
@@ -58,16 +53,15 @@ const Navbar = () => {
             />
           </div>
         </div>
-        <span style={{
+        <span className="nav-name" style={{
           fontFamily: 'var(--font-display)',
-          fontWeight: 700,
-          fontSize: '1.1rem',
+          fontWeight: 700, fontSize: '1.1rem',
           color: 'var(--text-primary)',
         }}>Bryan Mamuyac</span>
       </div>
 
       {/* Desktop Nav */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }} className="desktop-nav">
+      <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }} className="desktop-nav">
         {navLinks.map(link => (
           <Link
             key={link.to}
@@ -78,10 +72,10 @@ const Navbar = () => {
             duration={600}
             onSetActive={() => setActiveSection(link.to)}
             style={{
-              padding: '8px 16px',
+              padding: '7px 13px',
               borderRadius: '50px',
               fontFamily: 'var(--font-body)',
-              fontSize: '0.9rem',
+              fontSize: '0.88rem',
               fontWeight: '500',
               cursor: 'pointer',
               color: activeSection === link.to ? 'var(--accent-primary)' : 'var(--text-secondary)',
@@ -89,16 +83,15 @@ const Navbar = () => {
               border: activeSection === link.to ? '1px solid var(--glass-border)' : '1px solid transparent',
               transition: 'var(--transition)',
               userSelect: 'none',
+              whiteSpace: 'nowrap',
             }}
-          >
-            {link.label}
-          </Link>
+          >{link.label}</Link>
         ))}
       </div>
 
-      {/* Right side controls */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-        {/* Theme Toggle */}
+      {/* Right controls */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
+        {/* Theme toggle */}
         <button
           onClick={toggleTheme}
           title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
@@ -108,18 +101,16 @@ const Navbar = () => {
               ? 'linear-gradient(135deg, #1a3a5c, #2d5986)'
               : 'linear-gradient(135deg, #bfdbfe, #93c5fd)',
             border: '1px solid var(--glass-border)',
-            borderRadius: '50px',
-            cursor: 'pointer',
-            position: 'relative',
-            transition: 'var(--transition)',
+            borderRadius: '50px', cursor: 'pointer',
+            position: 'relative', transition: 'var(--transition)',
+            flexShrink: 0,
           }}
         >
           <div style={{
             width: '18px', height: '18px',
             background: theme === 'dark' ? '#f6d860' : '#fff',
             borderRadius: '50%',
-            position: 'absolute',
-            top: '2px',
+            position: 'absolute', top: '2px',
             left: theme === 'dark' ? '22px' : '2px',
             transition: 'left 0.3s ease',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -129,11 +120,11 @@ const Navbar = () => {
           </div>
         </button>
 
-        {/* Hire Me Button */}
+        {/* Hire Me */}
         <a
           href={`mailto:${personalInfo.email}`}
-          className="btn-primary"
-          style={{ padding: '8px 20px', fontSize: '0.85rem' }}
+          className="btn-primary nav-hire"
+          style={{ padding: '8px 18px', fontSize: '0.85rem', whiteSpace: 'nowrap' }}
         >
           <span>Hire Me</span>
         </a>
@@ -163,7 +154,7 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile dropdown menu */}
       {menuOpen && (
         <div style={{
           position: 'absolute',
@@ -171,8 +162,8 @@ const Navbar = () => {
           background: 'var(--nav-bg)',
           backdropFilter: 'blur(20px)',
           borderBottom: '1px solid var(--glass-border)',
-          padding: '16px 24px',
-          display: 'flex', flexDirection: 'column', gap: '4px',
+          padding: '12px 16px',
+          display: 'flex', flexDirection: 'column', gap: '2px',
         }}>
           {navLinks.map(link => (
             <Link
@@ -201,7 +192,9 @@ const Navbar = () => {
       <style>{`
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
-          .hamburger { display: flex !important; }
+          .hamburger   { display: flex !important; }
+          .nav-name    { display: none !important; }
+          .nav-hire    { padding: 7px 12px !important; font-size: 0.78rem !important; }
         }
       `}</style>
     </nav>
