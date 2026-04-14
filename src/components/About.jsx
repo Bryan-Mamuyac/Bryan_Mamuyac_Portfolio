@@ -53,9 +53,25 @@ const About = () => {
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '20px', fontSize: '1.02rem' }}>
               {personalInfo.bio}
             </p>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '36px', fontSize: '1.02rem' }}>
+            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '24px', fontSize: '1.02rem' }}>
               {personalInfo.bio2}
             </p>
+
+            {/* Growth mindset callout */}
+            <div style={{
+              padding: '16px 20px',
+              background: 'rgba(99,179,237,0.06)',
+              border: '1px solid rgba(99,179,237,0.2)',
+              borderLeft: '3px solid var(--accent-primary)',
+              borderRadius: '0 12px 12px 0',
+              marginBottom: '28px',
+            }}>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
+                <strong style={{ color: 'var(--accent-primary)' }}>Self-taught & project-driven</strong>
+                {' '}— Currently exploring TypeScript, Node.js, Vue.js, Next.js, Angular, and Java through real projects.
+                Motivated by the belief that the best developers never stop learning.
+              </p>
+            </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {[

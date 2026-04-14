@@ -11,8 +11,8 @@ export const personalInfo = {
   location: "Aringay, La Union, Philippines",
   email: "bryanmamuyac24@yahoo.com",
   phone: "09957691537",
-  bio: "Information Technology graduate from DMMMSU-MLUC, major in Business Analytics. Building systems that automates and dashboards that speak. Bridging full-stack development and data analytics to build solutions that don't just run — they reveal.",
-  bio2: "Currently seeking opportunities in Full Stack Development and Data Analytics where I can bridge these two disciplines to build products that don't just run, but reveal.",
+  bio: "Information Technology graduate from DMMMSU-MLUC, major in Business Analytics. A self-taught and academically trained developer who continuously applies knowledge to real-life projects — from building OJT management systems and IoT dashboards to Power BI analytics pipelines. I don't just study technologies; I build with them.",
+  bio2: "Driven by a genuine passion to grow and learn, I push beyond coursework by exploring new frameworks and tools independently — currently expanding into TypeScript, Node.js, Vue.js, Next.js, Angular, and Java. I believe the best developers are those who never stop being curious. Seeking opportunities in Full Stack Development and Data Analytics where I can contribute, grow, and keep building solutions that don't just run — they reveal.",
   avatar: "/assets/images/bryan.jpg",          // Replace with your actual photo
   resumeUrl: "/assets/resume/Mamuyac_Bryan_JR_Resume.pdf",
   github: "https://github.com/Bryan-Mamuyac",
@@ -35,13 +35,19 @@ export const navLinks = [
 
 export const skills = {
   fullstack: [
-    { name: "ASP.NET Core MVC 8",      level: 90, icon: "aspnet"    },
-    { name: "SQL Server / Dapper",      level: 88, icon: "database"  },
-    { name: "HTML / CSS / JavaScript",  level: 92, icon: "code"      },
-    { name: "PHP / Laravel",            level: 75, icon: "php"       },
-    { name: "MySQL",                    level: 82, icon: "mysql"     },
-    { name: "SignalR (WebSockets)",     level: 78, icon: "signal"    },
-    { name: "React",                    level: 70, icon: "react"     },
+    { name: "ASP.NET Core MVC 8",      level: 90, icon: "aspnet"     },
+    { name: "SQL Server / Dapper",      level: 88, icon: "database"   },
+    { name: "HTML / CSS / JavaScript",  level: 92, icon: "code"       },
+    { name: "PHP / Laravel",            level: 75, icon: "php"        },
+    { name: "MySQL",                    level: 82, icon: "mysql"      },
+    { name: "SignalR (WebSockets)",     level: 78, icon: "signal"     },
+    { name: "React",                    level: 70, icon: "react"      },
+    { name: "TypeScript",               level: 55, icon: "typescript", tag: "Learning" },
+    { name: "Node.js",                  level: 52, icon: "nodejs",     tag: "Learning" },
+    { name: "Vue.js",                   level: 48, icon: "vue",        tag: "Learning" },
+    { name: "Next.js",                  level: 45, icon: "nextjs",     tag: "Learning" },
+    { name: "Angular",                  level: 42, icon: "angular",    tag: "Learning" },
+    { name: "Java",                     level: 50, icon: "java",       tag: "Learning" },
   ],
   dataAnalytics: [
     { name: "Power BI",                 level: 88, icon: "powerbi"   },
@@ -64,6 +70,7 @@ export const techBadges = [
   "ASP.NET Core", "SQL Server", "Power BI", "Python", "React",
   "PHP", "Laravel", "MySQL", "SignalR", "JavaScript", "HTML/CSS",
   "Arduino", "Tableau", "Cisco", "Git", "Dapper", "SSIS", "Pandas", "NumPy",
+  "TypeScript", "Node.js", "Vue.js", "Next.js", "Angular", "Java",
 ];
 
 export const projects = [
